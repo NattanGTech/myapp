@@ -1,0 +1,204 @@
+/* BODY AND GENERAL CLASS NAMES */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.buttonDesign{
+  padding: 5%;
+  color: white;
+  background-color: #292626;
+  border: 1px solid #d6d6d6;
+  border-radius: 5px;
+  text-align: center;
+  transition: 0s background-color;
+}
+
+.buttonDesign:hover{
+  background-color: red !important;
+  transition-duration: .3s;
+}
+
+
+
+/* NAVBAR */
+.navStyle{
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navStyle h1{
+  text-align: center;
+  background-color: #212529 !important;
+  color: #d6d6d6 !important;
+  margin-bottom: 0%;
+}
+
+.navvbar{
+  margin-bottom: 1%;
+}
+
+
+
+/* FOOTER */
+.footer{
+  border-top: solid 1px #131313;
+  margin-top: 2%;
+  padding: 1%;
+  background-color: #292626 !important;
+  color: #d6d6d6;
+}
+
+
+
+/* HOME PAGE */
+body .homePage{
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.homePage{
+  margin-top: 0%;
+  padding-top: 3%;
+  background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3a390145-1e80-4c9f-bea4-6f11959496cd/del304o-a42b2fab-d054-4ae3-be0b-dcb50b429172.jpg/v1/fill/w_1280,h_720,q_75,strp/pokeball_wallpaper_by_blackholekun_del304o-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvM2EzOTAxNDUtMWU4MC00YzlmLWJlYTQtNmYxMTk1OTQ5NmNkXC9kZWwzMDRvLWE0MmIyZmFiLWQwNTQtNGFlMy1iZTBiLWRjYjUwYjQyOTE3Mi5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.uUBZCvo3rUs5zwjD83BHcfVX8H_E70EkJqrgIRqBCaw);
+}
+
+.homePage h1{
+  background-color: #212529 !important;
+  color: #d6d6d6;
+  text-align: center;
+  margin-top: -3%;
+  padding: 1%;
+  margin-bottom: 3%;
+}
+
+.homePage .homePageContent{
+  background-color: #d6d6d6 !important;
+  border: #212529 solid 3px;
+  border-radius: 10px;
+}
+
+.homePage h2, .homePage h3{
+  text-align: center;
+}
+
+.homePage .homePageContent .homeButton{
+  margin-top: 3%;
+  margin-bottom: 3%;
+}
+
+.homePage .homePageContent .buttonText{
+  text-decoration: none;
+  color: #d6d6d6;
+}
+
+.homePage .homePageContent .buttonText img{
+  width: 30%;
+}
+
+.homePage .homePageContent .pokemonLogo{
+  width: 20%;
+  margin-bottom: 5%;
+  margin-top: 3%;
+  margin-left: 40%;
+}
+
+
+
+
+.pokedex{
+  background-image: url(https://i.pinimg.com/originals/03/42/44/034244f741ad75bd774965c7f9772879.png);
+}
+
+.pokemon{
+  background-image: url(https://external-preview.redd.it/cYzcITjTc2ym88qn23jiPTmfVnfwOierlarRz3tZvgA.jpg?auto=webp&s=1456bf94490c41352f40dae68e0043acdff66253);
+}
+
+.admin{
+  background-image: url(https://external-preview.redd.it/cYzcITjTc2ym88qn23jiPTmfVnfwOierlarRz3tZvgA.jpg?auto=webp&s=1456bf94490c41352f40dae68e0043acdff66253);
+}
+
+.typeFilterSelect{
+  color: white !important;
+  background-color: #292626 !important;
+}
+
+.filterStick{
+  position: sticky;
+  top: 13%;
+  z-index: 200;
+}
+
+.typeFilterSelect:hover{
+  cursor: pointer;
+}
+
+
+.typeButton{
+  margin: 1%;
+  display: inline-block;
+  justify-content: center;
+}
+
+.typeDesign{
+  border: 0;
+}
+
+.pokemonCard{
+  width: 90%;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-bottom: 10%;
+  margin-top: 0%;
+  border: solid 3px #131313 !important;
+}
+
+.pokemonCard .pokemonImg{
+  padding: 10%;
+  width: 100%;
+  height: 225px;
+  display: flex;
+  justify-content: center;
+  background-image: url(https://i.pinimg.com/originals/52/9d/2b/529d2b151c33ba79a4008b6da88fdf85.jpg);
+  background-size: cover;
+  transition: transform .2s;
+}
+
+.pokemonCard .pokemonImg:hover{
+  transform: scale(1.1);
+}
+
+.pokemonCard .cardBody{
+  background-color: #c70014;
+  color: white;
+  border-radius: 3px;
+  border-top: solid 3px #131313;
+}
+
+.pokemonCard p{
+  font-style: bold;
+  font-size: 1.5vw;
+}
+
+.pokemonCard .typeImg{
+  width: 50%;
+  display: flex;
+  margin-bottom: 2%;
+  justify-content: center;
+}
+
+.pokemonCard .oneType{
+  margin-top: 13%;
+  margin-bottom: 13%;
+}
