@@ -50,15 +50,6 @@ function Pokedex(props){
 
     },[triTypes]);
 
-    useEffect(() => {
-        if(search===""){
-            setPokemonsShow(pokemons)
-        }else{
-            setPokemonsShow(pokemons.filter(pok => pok.name === search))
-        }
-
-    },[search]);
-
     return <div className="pokedex">
         {Menu()}
         <Row>
@@ -68,8 +59,12 @@ function Pokedex(props){
             </Col>
             <Col xs={8}>
                 <Row>
-                    {
-                        pokemonsShow.map((pokemon) =>{
+                {pokemonsShow.filter((pok) => {
+                            return search.toLowerCase() === ''
+                                ? pok
+                                : pok.name.toLowerCase().includes(search.toLowerCase());})
+
+                        .map((pokemon) =>{
                             if (pokemon.PokedexNb<9){
                                 var pokedexUnity = "#00"
                             } else if (pokemon.PokedexNb<99) {
@@ -84,6 +79,7 @@ function Pokedex(props){
                                                 <Card.Title>N°Pokedex : <br></br>{pokedexUnity+pokemon.PokedexNb}</Card.Title>
                                                 <Card.Text>
                                                     <p>{pokemon.name}</p>
+                                                    <p>{pokemon.nickname}</p>
                                                 </Card.Text>
                                                 <Card.Text>
                                                     {

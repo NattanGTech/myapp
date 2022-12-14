@@ -1,3 +1,7 @@
+#root{
+  font-family: 'Press Start 2P', cursive;
+}
+
 .App {
   text-align: center;
 }
@@ -37,6 +41,4 @@
   }
 }
 
-@font-face{
-  font-family: "";
-}
+

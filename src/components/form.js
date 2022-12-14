@@ -57,7 +57,7 @@ function FormPokemon(props) {
                     <Form.Label>Lien de l'image</Form.Label>
                     <Form.Control type="text" {...register("img")}/>
                 </Form.Group>
-                <Button type="submit" onClick={() => {props.setRefresh(true) 
+                <Button type="submit" className="modalBtn" onClick={() => {props.setRefresh(true) 
                                                         props.handleClose()
                                                     }}>Submit</Button>
             </Form>

@@ -1,5 +1,5 @@
 import { useEffect, useState} from "react";
-import { Button, Col, Form, Modal, Row } from "react-bootstrap";
+import { Button, Col, Form, Modal, Row, ToastContainer } from "react-bootstrap";
 import { addPokedex, getAll, getTypes} from "../api/pokemons";
 import Menu from "../components/nav.js";
 import Card from 'react-bootstrap/Card';
@@ -26,12 +26,13 @@ function Pokemon(props){
     const onSubmit = (data) => {
         let pok = selectedPokemon
         pok._id = pok._id + data.name
-        pok.name = data.name
+        pok.nickname = data.name
+        handleClose()
         addPokedex(pok)
         setRefresh(true)
     }
 
-    
+
     useEffect(() => {
         const pokemonsFetched = getAll();
         pokemonsFetched
@@ -66,26 +67,17 @@ function Pokemon(props){
 
     },[triTypes]);
 
-    useEffect(() => {
-        if(search===""){
-            setPokemonsShow(pokemons)
-        }else{
-            setPokemonsShow(pokemons.filter(pok => pok.name === search))
-        }
-
-    },[search]);
-
 
 
     return <div className="pokemon">
         {Menu()}
         <Modal show={show} onHide={handleClose}>
-            <Modal.Body>
+            <Modal.Body className="modalDesign">
                 <Form onSubmit={handleSubmit(onSubmit)}>
                     <Form.Group className="mb-3" controlId="name">
                         <Form.Control type="text" placeholder="Nom de ton pokemon" {...register("name")}/>
                     </Form.Group>
-                    <Button type="submit" onClick={() => {handleClose()}}>Valider</Button>
+                    <Button className="modalBtn" type="submit">Valider</Button>
                 </Form>
             </Modal.Body>
         </Modal>
@@ -96,8 +88,12 @@ function Pokemon(props){
             </Col>
             <Col xs={8}>
                 <Row>
-                    {
-                        pokemonsShow.map((pokemon) =>{
+                    {pokemonsShow.filter((pok) => {
+                            return search.toLowerCase() === ''
+                                ? pok
+                                : pok.name.toLowerCase().includes(search.toLowerCase());})
+
+                                .map((pokemon) =>{
                             if (pokemon.PokedexNb<9){
                                 var pokedexUnity = "#00"
                             } else if (pokemon.PokedexNb<99) {
@@ -111,7 +107,7 @@ function Pokemon(props){
                                             <Card.Body className="cardBody">
                                                 <Card.Title>N°Pokedex : <br></br>{pokedexUnity+pokemon.PokedexNb}</Card.Title>
                                                 <Card.Text>
-                                                    <p>{pokemon.name}</p>
+                                                    {pokemon.name}
                                                 </Card.Text>
                                                 <Card.Text>
                                                     {
@@ -140,15 +136,6 @@ function Pokemon(props){
                                                                                 handleShow()
                                                                                 setSelectedPokemon(pokemon);
                                                                             }}>Capturer !</button>
-                                                {/*
-                                                    pokedex.map((pokemon) => {
-                                                        if (pokemon.name === pokedex.pokemon.name){
-                                                            return "Error"
-                                                        }else{
-                                                            return ()=>addPokedex(pokemon)
-                                                        }
-                                                    })
-                                                */}
                                             </Card.Body>
                                         </Card>
                                     </Col>

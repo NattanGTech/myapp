@@ -33,11 +33,11 @@ function ModifPokemon(props) {
                     <Form.Label>Numéro du pokedex</Form.Label>
                     <Form.Control type="text" {...register("PokedexNb")} defaultValue={props.pokemon.PokedexNb}/>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="name">
+                <Form.Group className="mb-3 modalBoxDesign" controlId="name">
                     <Form.Label>Nom du pokemon</Form.Label>
                     <Form.Control type="text" {...register("name")} defaultValue={props.pokemon.name}/>
                 </Form.Group>
-                <Form.Select aria-label="Default select example" {...register("type1", { required: true })}>
+                <Form.Select className="modalBoxDesign" aria-label="Default select example" {...register("type1", { required: true })}>
                     <option>1er Type</option>
                     { 
                     types.map((type) =>{
@@ -65,9 +65,10 @@ function ModifPokemon(props) {
                     <Form.Label>Lien de l'image</Form.Label>
                     <Form.Control type="text" {...register("img")} defaultValue ={props.pokemon.img}/>
                 </Form.Group>
-                <Button type="submit" onClick={() => {props.setRefresh(true) 
-                                                        props.handleClose1()
-                                                    }}>Submit</Button>
+                <Button className="modalBtn" type="submit"onClick={() => {
+                        props.setRefresh(true) 
+                        props.handleClose1()
+                    }}>Submit</Button>
             </Form>
         </>
       );

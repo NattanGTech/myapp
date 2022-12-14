@@ -59,15 +59,6 @@ function Admin(props){
 
     },[triTypes]);
 
-    useEffect(() => {
-        if(search===""){
-            setPokemonsShow(pokemons)
-        }else{
-            setPokemonsShow(pokemons.filter(pok => pok.name === search))
-        }
-
-    },[search]);
-
     return <div className="admin">
         {Menu()}
         
@@ -79,8 +70,11 @@ function Admin(props){
                 </Col>
                 <Col xs={{ span: 10, offset: 1}}  lg={{ span: 8, offset: 0}}>
                     <Row>
-                        {
-                            pokemonsShow.map((pokemon) =>{
+                    {pokemonsShow.filter((pok) => {
+                            return search.toLowerCase() === ''
+                                ? pok
+                                : pok.name.toLowerCase().includes(search.toLowerCase());})
+                            .map((pokemon) =>{
                                 if (pokemon.PokedexNb<9){
                                     var pokedexUnity = "#00"
                                 } else if (pokemon.PokedexNb<99) {
@@ -145,7 +139,7 @@ function Admin(props){
                         <Modal.Header closeButton>
                             <Modal.Title>Ajouter un pokemon</Modal.Title>
                         </Modal.Header>
-                        <Modal.Body>
+                        <Modal.Body className="modalDesign">
                             <FormPokemon setRefresh={setRefresh} handleClose={handleClose}/>
                         </Modal.Body>
                     </Modal>
@@ -153,74 +147,12 @@ function Admin(props){
                         <Modal.Header closeButton>
                             <Modal.Title>Modifier un pokemon</Modal.Title>
                         </Modal.Header>
-                        <Modal.Body>
+                        <Modal.Body className="modalDesign">
                             <ModifPokemon pokemon={selectedPokemon} setRefresh={setRefresh} handleClose1={handleClose1}/>
                         </Modal.Body>
                     </Modal>
                 </Col>
             </Row>
-            {/* <Row>
-                <Col sm={2}>
-                    {
-                        types.map((type) =>{
-                        return  <div>
-                                    <br/>
-                                    <button onClick={()=>setTriTypes(type.name)}><img src={type.img} alt=""/></button>
-                                    <br/>
-                                </div>
-                        })
-                    }
-                    <br/>
-                    <button onClick={()=>setTriTypes("all")}>Réinitialiser</button>
-                </Col>
-                <Col sm={10}>
-                    <Row>
-                        {
-                            pokemons.map((pokemon,key) =>{
-                                if (key<9){
-                                    var pokedexUnity = "#00"
-                                } else if (key<99) {
-                                    pokedexUnity = "#0"
-                                } else {
-                                    pokedexUnity = "#"
-                                }
-                                if ((triTypes  === "all")||(pokemon.type[0].name === triTypes)||((pokemon.type.length===2)&&(pokemon.type[1].name === triTypes))){
-                                    return  <Col sm={4}>
-                                                <div>
-                                                    <h2>Pokedex Number : {pokedexUnity+String(key+1)}</h2>
-                                                    <img src={pokemon.img} alt=""/>
-                                                    <h2>{pokemon.name}</h2>
-                                                    {
-                                                        types.map((type) =>{
-                                                            if (pokemon.type[0].name===type.name){
-                                                                var imgType1 = type.img
-                                                            }
-                                                            if (pokemon.type.length===2){
-                                                                if (pokemon.type[1].name===type.name){
-                                                                    return  <>
-                                                                                <img src={imgType1} alt=""/>
-                                                                                <img src={type.img} alt=""/>
-                                                                            </>
-                                                                }
-                                                            }
-                                                            return <img src={imgType1} alt=""/>
-                                                        })
-                                                    }
-                                                    <button onClick={()=>{
-                                                                        handleShow1()
-                                                                        setSelectedPokemon(pokemon);
-                                                                    }}>Modifier</button>
-                                                    <button onClick={()=>{Supprimer(pokemon)
-                                                                        setRefresh(true)
-                                                                        }}>Supprimer</button>
-                                                </div>
-                                            </Col>
-                                }
-                            })
-                        }
-                    </Row>
-                </Col>
-            </Row> */}
         </div>
         {pageFooter()}
     </div>;

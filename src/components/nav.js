@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 function Menu() {
   return (
     <div className="navStyle">
-      <h1>ReactJS-Pokedex</h1>
+      <h1>Pokedex de ZinZin</h1>
       <Navbar className="navvbar" bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="/">Acceuil</Navbar.Brand>
