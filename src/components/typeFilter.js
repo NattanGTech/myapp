@@ -17,7 +17,7 @@ function TypeFilter(props) {
    return (
     <div className="filterStick">
         <Row>
-            <Col xs={{ span: 4, offset: 2 }}>
+            <Col xs={{ span: 10, offset: 1}}>
                 <Form.Select className="typeFilterSelect" aria-label="Default select example" onChange={(e)=>{props.setTriTypes(e.target.value)}}>
                     <option value = "all">Tous les Types</option>
                     {

@@ -7,6 +7,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  background-image: url(https://media.istockphoto.com/id/1028139760/photo/carbon-fiber-seamless-texture.jpg?s=170667a&w=0&k=20&c=5dV9Jij6wWk-mNbunbfjIVBjXrNti1CIoY3j70WgeIk=);
 }
 
 code {
@@ -15,7 +16,32 @@ code {
 }
 
 .buttonDesign{
+  padding: 15%;
+  color: white !important;
+  background-color: #292626 !important;
+  border: 1px solid #d6d6d6 !important;
+  border-radius: 5px !important;
+  text-align: center;
+  transition: 0s background-color;
+}
+
+.buttonDesign1{
   padding: 5%;
+  color: white !important;
+  background-color: #292626 !important;
+  border: 1px solid #d6d6d6 !important;
+  border-radius: 5px !important;
+  text-align: center;
+  transition: 0s background-color;
+}
+
+.addButton{
+  margin-bottom: 3%;
+  margin-right: 7%;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+  padding-left: 23.5%;
+  padding-right: 23.5%;
   color: white;
   background-color: #292626;
   border: 1px solid #d6d6d6;
@@ -24,9 +50,9 @@ code {
   transition: 0s background-color;
 }
 
-.buttonDesign:hover{
+.buttonDesign:hover, .addButton:hover{
   background-color: red !important;
-  transition-duration: .3s;
+  transition-duration: .1s;
 }
 
 
@@ -71,7 +97,6 @@ body .homePage{
 .homePage{
   margin-top: 0%;
   padding-top: 3%;
-  background-image: url(https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3a390145-1e80-4c9f-bea4-6f11959496cd/del304o-a42b2fab-d054-4ae3-be0b-dcb50b429172.jpg/v1/fill/w_1280,h_720,q_75,strp/pokeball_wallpaper_by_blackholekun_del304o-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvM2EzOTAxNDUtMWU4MC00YzlmLWJlYTQtNmYxMTk1OTQ5NmNkXC9kZWwzMDRvLWE0MmIyZmFiLWQwNTQtNGFlMy1iZTBiLWRjYjUwYjQyOTE3Mi5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.uUBZCvo3rUs5zwjD83BHcfVX8H_E70EkJqrgIRqBCaw);
 }
 
 .homePage h1{
@@ -84,12 +109,12 @@ body .homePage{
 }
 
 .homePage .homePageContent{
-  background-color: #d6d6d6 !important;
+  background-image: url(https://i.imgur.com/AX3Q2so.png);
   border: #212529 solid 3px;
   border-radius: 10px;
 }
 
-.homePage h2, .homePage h3{
+.homePage h2{
   text-align: center;
 }
 
@@ -114,36 +139,32 @@ body .homePage{
   margin-left: 40%;
 }
 
-
+.searchFilterButton{
+  text-align: center;
+}
 
 
 .pokedex{
-  background-image: url(https://i.pinimg.com/originals/03/42/44/034244f741ad75bd774965c7f9772879.png);
+  background-image: url(https://media.istockphoto.com/id/1028139760/photo/carbon-fiber-seamless-texture.jpg?s=170667a&w=0&k=20&c=5dV9Jij6wWk-mNbunbfjIVBjXrNti1CIoY3j70WgeIk=);
 }
 
 .pokemon{
-  background-image: url(https://external-preview.redd.it/cYzcITjTc2ym88qn23jiPTmfVnfwOierlarRz3tZvgA.jpg?auto=webp&s=1456bf94490c41352f40dae68e0043acdff66253);
+  background-image: url(https://media.istockphoto.com/id/1028139760/photo/carbon-fiber-seamless-texture.jpg?s=170667a&w=0&k=20&c=5dV9Jij6wWk-mNbunbfjIVBjXrNti1CIoY3j70WgeIk=);
 }
 
 .admin{
-  background-image: url(https://external-preview.redd.it/cYzcITjTc2ym88qn23jiPTmfVnfwOierlarRz3tZvgA.jpg?auto=webp&s=1456bf94490c41352f40dae68e0043acdff66253);
+  background-image: url(https://media.istockphoto.com/id/1028139760/photo/carbon-fiber-seamless-texture.jpg?s=170667a&w=0&k=20&c=5dV9Jij6wWk-mNbunbfjIVBjXrNti1CIoY3j70WgeIk=);
 }
 
 .typeFilterSelect{
   color: white !important;
   background-color: #292626 !important;
-}
-
-.filterStick{
-  position: sticky;
-  top: 13%;
-  z-index: 200;
+  margin-top: 2%;
 }
 
 .typeFilterSelect:hover{
   cursor: pointer;
 }
-
 
 .typeButton{
   margin: 1%;
@@ -196,6 +217,11 @@ body .homePage{
   display: flex;
   margin-bottom: 2%;
   justify-content: center;
+  transition: transform .2s;
+}
+
+.pokemonCard .typeImg:hover{
+  transform: scale(1.1);
 }
 
 .pokemonCard .oneType{

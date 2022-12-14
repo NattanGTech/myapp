@@ -31,11 +31,11 @@ function ModifPokemon(props) {
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3" controlId="id">
                     <Form.Label>Numéro du pokedex</Form.Label>
-                    <Form.Control type="text" {...register("PokedexNb")} value={props.pokemon.PokedexNb}/>
+                    <Form.Control type="text" {...register("PokedexNb")} defaultValue={props.pokemon.PokedexNb}/>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="name">
                     <Form.Label>Nom du pokemon</Form.Label>
-                    <Form.Control type="text" {...register("name")} value={props.pokemon.name}/>
+                    <Form.Control type="text" {...register("name")} defaultValue={props.pokemon.name}/>
                 </Form.Group>
                 <Form.Select aria-label="Default select example" {...register("type1", { required: true })}>
                     <option>1er Type</option>
@@ -63,7 +63,7 @@ function ModifPokemon(props) {
                 </Form.Select>
                 <Form.Group className="mb-3" controlId="name">
                     <Form.Label>Lien de l'image</Form.Label>
-                    <Form.Control type="text" {...register("img")} value={props.pokemon.img}/>
+                    <Form.Control type="text" {...register("img")} defaultValue ={props.pokemon.img}/>
                 </Form.Group>
                 <Button type="submit" onClick={() => {props.setRefresh(true) 
                                                         props.handleClose1()

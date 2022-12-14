@@ -1,10 +1,12 @@
 import { useEffect, useState} from "react";
-import { Col, Row } from "react-bootstrap";
+import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import { addPokedex, getAll, getTypes} from "../api/pokemons";
 import Menu from "../components/nav.js";
 import Card from 'react-bootstrap/Card';
 import TypeFilter from "../components/typeFilter";
 import pageFooter from "../components/pageFooter";
+import Search from "../components/search";
+import { useForm } from "react-hook-form";
 
 
 function Pokemon(props){
@@ -12,20 +14,48 @@ function Pokemon(props){
     const [ pokemons, setPokemons ] = useState([]);
     const [ types, setTypes ] = useState([]);
     const [ triTypes, setTriTypes ] = useState("all");
-    const [ search, setSearch] = useState('all');
+    const [ search, setSearch] = useState('');
+    const { register, handleSubmit } = useForm();
+    const [selectedPokemon, setSelectedPokemon] = useState([]);
+    const [show, setShow] = useState(false);
+    const [ refresh, setRefresh ] = useState(false);
 
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const onSubmit = (data) => {
+        let pok = selectedPokemon
+        pok._id = pok._id + data.name
+        pok.name = data.name
+        addPokedex(pok)
+        setRefresh(true)
+    }
+
+    
     useEffect(() => {
         const pokemonsFetched = getAll();
         pokemonsFetched
-        .then(result => (setPokemons(result), setPokemonsShow(result)))
+        .then(result => setPokemons(result))
         .catch(error=>console.error("Error :",error.message))
-        //setPokemons(pokemons.sort(PokedexNb))
 
         const typesFetched = getTypes();
         typesFetched
         .then(result => setTypes(result))
         .catch(error=>console.error("Error :",error.message));
-   },[]);
+   },[refresh]);
+
+   useEffect(() => {
+        setPokemonsShow(pokemons.sort(function(a, b){
+            if ( parseInt(a.PokedexNb) < parseInt(b.PokedexNb) ){
+                return -1;
+            }
+            if ( parseInt(a.PokedexNb) > parseInt(b.PokedexNb) ){
+                return 1;
+            }
+            return 0;
+        }))
+
+    },[pokemons]);
 
    useEffect(() => {
         if(triTypes==="all"){
@@ -36,13 +66,33 @@ function Pokemon(props){
 
     },[triTypes]);
 
+    useEffect(() => {
+        if(search===""){
+            setPokemonsShow(pokemons)
+        }else{
+            setPokemonsShow(pokemons.filter(pok => pok.name === search))
+        }
+
+    },[search]);
+
 
 
     return <div className="pokemon">
         {Menu()}
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Body>
+                <Form onSubmit={handleSubmit(onSubmit)}>
+                    <Form.Group className="mb-3" controlId="name">
+                        <Form.Control type="text" placeholder="Nom de ton pokemon" {...register("name")}/>
+                    </Form.Group>
+                    <Button type="submit" onClick={() => {handleClose()}}>Valider</Button>
+                </Form>
+            </Modal.Body>
+        </Modal>
         <Row>
             <Col xs={2}>
                 <TypeFilter setTriTypes = {setTriTypes}/>
+                <Search setSearch = {setSearch} />
             </Col>
             <Col xs={8}>
                 <Row>
@@ -86,7 +136,10 @@ function Pokemon(props){
                                                         })
                                                     }
                                                 </Card.Text>
-                                                <button className="buttonDesign" onClick={()=>addPokedex(pokemon)}>Capturer !</button>
+                                                <button className="buttonDesign1" onClick={()=>{
+                                                                                handleShow()
+                                                                                setSelectedPokemon(pokemon);
+                                                                            }}>Capturer !</button>
                                                 {/*
                                                     pokedex.map((pokemon) => {
                                                         if (pokemon.name === pokedex.pokemon.name){

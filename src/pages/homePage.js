@@ -13,17 +13,16 @@ function Home(props){
                         </a>
                         <h2>BIENVENUE SUR LE POKEDEX DE ZINZIN !!</h2>
                         <Row>
-                            <Col xs={{ span: 2, offset:1}} className="homeButton buttonDesign">
+                            <Col xs={{ span: 2, offset:1}} className="homeButton buttonDesign1">
                                 <Link to="/pokemon" className="buttonText"><img src="https://www.pngplay.com/wp-content/uploads/2/Pokeball-PNG-Pic-Background.png"/><br/>Liste des Pokemons Disponibles</Link>
                             </Col>
-                            <Col xs={{ span: 2, offset:2}} className="homeButton buttonDesign">
+                            <Col xs={{ span: 2, offset:2}} className="homeButton buttonDesign1">
                                 <Link to="/pokedex" className="buttonText"><img src="https://img.icons8.com/color/480/pokedex.png"/><br/>Liste des Pokemons en votre Possession</Link>
                             </Col>
-                            <Col xs={{ span: 2, offset:2}} className="homeButton buttonDesign">
+                            <Col xs={{ span: 2, offset:2}} className="homeButton buttonDesign1">
                                 <Link to="/admin" className="buttonText"><img src="https://cdn-icons-png.flaticon.com/512/1087/1087840.png"/><br/>Panneau de Gestion des Pokemons</Link>
                             </Col>
                         </Row>
-                        <h3>Nous vous remercions de votre visite sur le site !</h3>
                     </Col>
                 </Row>
                 {pageFooter()}

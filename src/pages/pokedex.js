@@ -4,6 +4,7 @@ import { getPokedex, getTypes, removePokedex } from "../api/pokemons.js";
 import Menu from "../components/nav.js";
 import TypeFilter from "../components/typeFilter.js";
 import pageFooter from "../components/pageFooter.js";
+import Search from "../components/search.js";
 
 function Pokedex(props){
     const [ pokemons, setPokemons ] = useState([]);
@@ -11,11 +12,12 @@ function Pokedex(props){
     const [ triTypes, setTriTypes ] = useState("all");
     const [ refresh, setRefresh ] = useState(false);
     const [ pokemonsShow, setPokemonsShow ] = useState([]);
+    const [ search, setSearch] = useState('');
 
     useEffect(() => {
         const pokemonsFetched = getPokedex();
         pokemonsFetched
-        .then(result => (setPokemons(result), setPokemonsShow(result)))
+        .then(result => setPokemons(result))
         .catch(error=>console.error("Erreur avec notre API :",error.message));
 
         const typesFetched = getTypes();
@@ -27,6 +29,19 @@ function Pokedex(props){
    },[refresh]);
 
    useEffect(() => {
+        setPokemonsShow(pokemons.sort(function(a, b){
+            if ( parseInt(a.PokedexNb) < parseInt(b.PokedexNb) ){
+                return -1;
+            }
+            if ( parseInt(a.PokedexNb) > parseInt(b.PokedexNb) ){
+                return 1;
+            }
+            return 0;
+        }))
+
+    },[pokemons]);
+
+   useEffect(() => {
     if(triTypes==="all"){
         setPokemonsShow(pokemons)
     }else{
@@ -35,11 +50,21 @@ function Pokedex(props){
 
     },[triTypes]);
 
+    useEffect(() => {
+        if(search===""){
+            setPokemonsShow(pokemons)
+        }else{
+            setPokemonsShow(pokemons.filter(pok => pok.name === search))
+        }
+
+    },[search]);
+
     return <div className="pokedex">
         {Menu()}
         <Row>
             <Col xs={2}>
                 <TypeFilter setTriTypes = {setTriTypes}/>
+                <Search setSearch = {setSearch} />
             </Col>
             <Col xs={8}>
                 <Row>
@@ -83,7 +108,7 @@ function Pokedex(props){
                                                         })
                                                     }
                                                 </Card.Text>
-                                                <button className="buttonDesign" onClick={()=>{
+                                                <button className="buttonDesign1" onClick={()=>{
                                                     removePokedex(pokemon)
                                                     setRefresh(true);
                                                 }}>Relacher</button>
